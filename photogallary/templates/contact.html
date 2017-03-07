@@ -57,15 +57,15 @@
     <br/>
 
     <div class="container">
+       <form method="post" enctype="multipart/form-data">
+           {% csrf_token %}
+           {{ form_contact }}
+           <button> Submit</button>
+       </form>
+        {% if flag_contact %}
+            <p>Message was saved</p>
+        {% endif %}
 
-        {% for photo in photos %}
-            {% if photo.image %}
-                <h1>{{ photo.title }}</h1>
-                <img src="{{ photo.image.url }}" class="img-responsive"/>
-                <div><a href="{% url 'add_like' photo.id %}"><button>Likes</button></a>{{ photo.likes }}</div>
-                <div><a href="{% url 'add_dislike' photo.id %}"><button>DisLikes</button></a>{{ photo.dislikes }}</div>
-            {% endif %}
-        {% endfor %}
 
     </div><!-- /.container -->
 

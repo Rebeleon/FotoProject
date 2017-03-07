@@ -17,13 +17,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
-from photos.views import photo_list
-from photos.views import photo_upload
+from photos.views import *
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', photo_list, name='photo_list'),
-    url(r'^photo_upload/$', photo_upload )
+    url(r'^photo_list_sort$', photo_list_sort, name='photo_list_sort'),
+    url(r'^photo_upload/$', photo_upload ),
+    url(r'^contact/$', contact ),
+    url(r'^(?P<id>[0-9]+)/add_like/$', add_like, name='add_like'),
+    url(r'^(?P<id>[0-9]+)/add_dislike/$', add_dislike, name='add_dislike'),
 
 ]
 if settings.DEBUG:
